@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
 import GenreTabs from '../components/GenreTabs';
 import MainContent from '../components/MainContent';
@@ -48,11 +47,7 @@ const MainLayout: React.FC = () => {
 };
 
 const Index: React.FC = () => {
-  return (
-    <MusicProvider>
-      <MainLayout />
-    </MusicProvider>
-  );
+  return <MainLayout />;
 };
 
 export default Index;
