@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
 import { useMusic } from '../context/MusicContext';
 import MiniPlayer from '../components/MiniPlayer';
-import { Moon, Sun, Volume2, Award, Shield, Bell, Language, Download } from 'lucide-react';
+import { Moon, Sun, Volume2, Award, Shield, Bell, Languages, Download } from 'lucide-react';
 
 const SettingsContent: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useMusic();
@@ -72,7 +71,7 @@ const SettingsContent: React.FC = () => {
             
             <div className="flex justify-between items-center p-4 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <Language className="text-cyan" size={20} />
+                <Languages className="text-cyan" size={20} />
                 <span>Language</span>
               </div>
               <select className="bg-white/10 py-1 px-3 rounded-full text-sm appearance-none pr-8 relative cursor-pointer">
