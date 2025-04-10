@@ -35,6 +35,20 @@ export const genres = [
   "Jazz"
 ];
 
+// Genre background colors
+export const genreColors = {
+  "All": "#6a11cb", // Purple gradient
+  "Old is Gold": "#FFB347", // Vintage orange
+  "90s Love": "#FF69B4", // Hot pink
+  "Bollywood": "#FF7043", // Coral
+  "Pop": "#4DB6AC", // Teal
+  "Rock": "#b92b27", // Crimson red
+  "Hip Hop": "#2C3E50", // Dark blue
+  "Electronic": "#00ACC1", // Cyan
+  "Lo-fi": "#8E44AD", // Purple
+  "Jazz": "#F39C12"  // Amber
+};
+
 export const songs: Song[] = [
   {
     id: "song-001",
@@ -211,6 +225,169 @@ export const songs: Song[] = [
       "Lost in the velvet groove",
       "No desire to move or prove"
     ]
+  },
+  // Additional songs for different genres
+  {
+    id: "song-009",
+    title: "Yesterday's Memory",
+    artist: "The Vintage Collective",
+    genre: "Old is Gold",
+    mood: "Nostalgic",
+    duration: "3:15",
+    image: "https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?q=80&w=300&auto=format&fit=crop",
+    album: "Golden Classics",
+    year: 1968,
+    lyrics: [
+      "Memories of yesterday",
+      "Golden times that fade away",
+      "But in my mind they'll always stay",
+      "Precious moments day by day",
+      "The summer sun, the autumn leaves",
+      "Winter snow and spring's reprieve",
+      "A lifetime passed before my eyes",
+      "Holding on to goodbye's"
+    ]
+  },
+  {
+    id: "song-010",
+    title: "Love Letter",
+    artist: "Heartbeats",
+    genre: "90s Love",
+    mood: "Romantic",
+    duration: "4:22",
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=300&auto=format&fit=crop",
+    album: "Forever Yours",
+    year: 1997,
+    lyrics: [
+      "Writing down these words for you",
+      "Hoping that they will come true",
+      "My heart speaks what my lips can't say",
+      "Dreaming of you night and day",
+      "This letter carries all my love",
+      "Pure as the stars above",
+      "Hold it close, feel me near",
+      "My love for you is sincere"
+    ]
+  },
+  {
+    id: "song-011",
+    title: "Dil Se",
+    artist: "Ananya Sharma",
+    genre: "Bollywood",
+    mood: "Emotional",
+    duration: "5:10",
+    image: "https://images.unsplash.com/photo-1626788353762-c49dcb8c5845?q=80&w=300&auto=format&fit=crop",
+    album: "Pyaar Ka Safar",
+    year: 2022,
+    lyrics: [
+      "Tum mere dil mein ho",
+      "Har dhadkan mein ho tum",
+      "Meri har saans mein",
+      "Bas tum hi tum ho",
+      "Aankhen band karoon",
+      "To bhi dikhte ho tum",
+      "Kaise kahoon main",
+      "Tumse kitna pyaar hai"
+    ]
+  },
+  {
+    id: "song-012",
+    title: "Rock Revolution",
+    artist: "Electric Thunder",
+    genre: "Rock",
+    mood: "Energetic",
+    duration: "3:48",
+    image: "https://images.unsplash.com/photo-1565035010268-a3816f98589a?q=80&w=300&auto=format&fit=crop",
+    album: "Rebellion",
+    year: 2021,
+    lyrics: [
+      "Breaking free from chains that bind",
+      "Leaving all the pain behind",
+      "Guitar screams, drums explode",
+      "Revolution mode",
+      "We are the voice that won't be silenced",
+      "We are the beat of defiance",
+      "Rock and roll in our veins",
+      "Freedom has no restrains"
+    ]
+  },
+  {
+    id: "song-013",
+    title: "Flow State",
+    artist: "MC Logic",
+    genre: "Hip Hop",
+    mood: "Confident",
+    duration: "3:24",
+    image: "https://images.unsplash.com/photo-1571609803510-71493b8d7834?q=80&w=300&auto=format&fit=crop",
+    album: "Mind Games",
+    year: 2023,
+    lyrics: [
+      "In the zone, mind flowing free",
+      "Words connecting, rhythmically",
+      "Beats drop hard, hearts beat fast",
+      "Present moment, forget the past",
+      "Rhymes unfold like stories told",
+      "New perspectives, truth unfolds",
+      "This is more than music man",
+      "This is life's master plan"
+    ]
+  },
+  {
+    id: "song-014",
+    title: "Starlight Sonata",
+    artist: "The Classical Experience",
+    genre: "Old is Gold",
+    mood: "Peaceful",
+    duration: "6:15",
+    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=300&auto=format&fit=crop",
+    album: "Timeless Tales",
+    year: 1952,
+    lyrics: [
+      "Instrumental piece",
+      "No lyrics for this classical composition"
+    ]
+  },
+  {
+    id: "song-015",
+    title: "Moonwalker",
+    artist: "Retro Kings",
+    genre: "90s Love",
+    mood: "Nostalgic",
+    duration: "4:02",
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=300&auto=format&fit=crop",
+    album: "Time Machine",
+    year: 1996,
+    lyrics: [
+      "Step back in time, feel the groove",
+      "Got my high tops on, ready to move",
+      "The dance floor calls my name tonight",
+      "Under the disco's flashing light",
+      "Moonwalk across the floor with ease",
+      "Moves so smooth they're sure to please",
+      "This rhythm takes me back to then",
+      "When music made us live again"
+    ]
+  },
+  {
+    id: "song-016",
+    title: "Mere Sapne",
+    artist: "Raj Kumar & Priya Patel",
+    genre: "Bollywood",
+    mood: "Hopeful",
+    duration: "4:32",
+    image: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=300&auto=format&fit=crop",
+    album: "Naya Safar",
+    year: 2023,
+    lyrics: [
+      "Mere sapne, mere rang",
+      "Mere apne, mere sang",
+      "Udne do mujhe aasmaan mein",
+      "Khone do mujhe in khayalon mein",
+      "Zindagi hai ek safar",
+      "Tu hai mera humsafar",
+      "Chalo chalein hum door kahin",
+      "Jahaan mile khushiyan har pal humein"
+    ]
   }
 ];
 
@@ -242,6 +419,20 @@ export const playlists: Playlist[] = [
     description: "Perfect soundtrack for rainy days",
     coverImage: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=300&auto=format&fit=crop",
     songs: [songs[3], songs[7]]
+  },
+  {
+    id: "playlist-005",
+    title: "Bollywood Hits",
+    description: "Top tracks from Indian cinema",
+    coverImage: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=80&w=300&auto=format&fit=crop",
+    songs: [songs[10], songs[15]]
+  },
+  {
+    id: "playlist-006",
+    title: "90s Nostalgia",
+    description: "Take a trip down memory lane",
+    coverImage: "https://images.unsplash.com/photo-1502773860571-211a597d6e4b?q=80&w=300&auto=format&fit=crop",
+    songs: [songs[9], songs[14]]
   }
 ];
 

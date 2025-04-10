@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { playlists, songs, Song } from '../data/mockData';
+import { playlists, songs, Song, genreColors } from '../data/mockData';
 import { useMusic } from '../context/MusicContext';
 import PlaylistCard from './PlaylistCard';
 import MostPlayedTrack from './MostPlayedTrack';
@@ -13,8 +13,16 @@ const MainContent: React.FC = () => {
     ? songs 
     : songs.filter(song => song.genre === selectedGenre);
 
+  // Get background color based on the selected genre
+  const genreBackgroundColor = genreColors[selectedGenre] || genreColors['All'];
+
   return (
-    <div className="w-full p-6">
+    <div 
+      className="w-full p-6 transition-all duration-500"
+      style={{ 
+        background: `linear-gradient(to bottom, ${genreBackgroundColor}40, transparent 70%)` 
+      }}
+    >
       <section className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Featured Playlists</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
