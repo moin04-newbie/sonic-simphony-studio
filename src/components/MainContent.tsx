@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { playlists, songs } from '../data/mockData';
+import { playlists, songs, Song } from '../data/mockData';
 import { useMusic } from '../context/MusicContext';
 import PlaylistCard from './PlaylistCard';
 import MostPlayedTrack from './MostPlayedTrack';
@@ -43,13 +43,7 @@ const MainContent: React.FC = () => {
 };
 
 interface SongCardProps {
-  song: {
-    id: string;
-    title: string;
-    artist: string;
-    image: string;
-    duration: string;
-  };
+  song: Song; // Using the Song interface imported from mockData.ts
 }
 
 const SongCard: React.FC<SongCardProps> = ({ song }) => {
