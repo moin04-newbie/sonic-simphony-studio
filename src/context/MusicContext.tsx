@@ -1,5 +1,5 @@
 
-import React, { createContext, useState, ReactNode, useContext } from 'react';
+import React, { createContext, useState, ReactNode, useContext, useRef, useEffect } from 'react';
 import { Song, songs, genres, playlists, mostPlayedTrack } from '../data/mockData';
 
 interface MusicContextType {
@@ -11,7 +11,6 @@ interface MusicContextType {
   volume: number;
   lyrics: string[];
   currentLyricIndex: number;
-  isDarkMode: boolean;
   playSong: (song: Song) => void;
   pauseSong: () => void;
   togglePlay: () => void;
@@ -21,7 +20,6 @@ interface MusicContextType {
   selectPlaylist: (playlistId: string | null) => void;
   nextSong: () => void;
   previousSong: () => void;
-  toggleDarkMode: () => void;
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
@@ -34,7 +32,66 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [progress, setProgress] = useState<number>(0);
   const [volume, setVolume] = useState<number>(80);
   const [currentLyricIndex, setCurrentLyricIndex] = useState<number>(0);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize audio element
+  useEffect(() => {
+    audioRef.current = new Audio();
+    audioRef.current.volume = volume / 100;
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Update volume when it changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
+
+  // Update audio source when song changes
+  useEffect(() => {
+    if (currentSong && audioRef.current) {
+      // If the song has an audio property, use it; otherwise default to a placeholder
+      const audioSource = currentSong.audio || 'https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3';
+      audioRef.current.src = audioSource;
+      
+      if (isPlaying) {
+        audioRef.current.play();
+      }
+    }
+  }, [currentSong]);
+
+  // Update progress bar based on audio playback
+  useEffect(() => {
+    if (audioRef.current) {
+      const handleTimeUpdate = () => {
+        if (audioRef.current) {
+          const percentage = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+          setProgress(isNaN(percentage) ? 0 : percentage);
+        }
+      };
+
+      const handleEnded = () => {
+        nextSong();
+      };
+
+      audioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+      audioRef.current.addEventListener('ended', handleEnded);
+
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+          audioRef.current.removeEventListener('ended', handleEnded);
+        }
+      };
+    }
+  }, [currentSong]);
 
   // Mock lyrics display - would be time-based in a real app
   React.useEffect(() => {
@@ -45,23 +102,29 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
           if (next >= currentSong.lyrics.length) return 0;
           return next;
         });
-        
-        // Update progress for visual effect
-        setProgress((prev) => {
-          const next = prev + 1;
-          if (next >= 100) return 0;
-          return next;
-        });
       }, 2000);
       
       return () => clearInterval(interval);
     }
   }, [isPlaying, currentSong]);
 
+  // Update audio playback when isPlaying changes
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play().catch(error => {
+          console.error("Error playing audio:", error);
+          setIsPlaying(false);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
+
   const playSong = (song: Song) => {
     setCurrentSong(song);
     setIsPlaying(true);
-    setProgress(0);
     setCurrentLyricIndex(0);
   };
 
@@ -97,10 +160,6 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     playSong(allSongs[prevIndex]);
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
-  };
-
   const value = {
     currentSong,
     isPlaying,
@@ -110,7 +169,6 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     volume,
     lyrics: currentSong?.lyrics || [],
     currentLyricIndex,
-    isDarkMode,
     playSong,
     pauseSong,
     togglePlay,
@@ -119,8 +177,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     selectGenre,
     selectPlaylist,
     nextSong,
-    previousSong,
-    toggleDarkMode
+    previousSong
   };
 
   return (
