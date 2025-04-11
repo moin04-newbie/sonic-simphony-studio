@@ -5,11 +5,14 @@ import GenreTabs from '../components/GenreTabs';
 import MainContent from '../components/MainContent';
 import Player from '../components/Player';
 import MiniPlayer from '../components/MiniPlayer';
+import { useMusic } from '../context/MusicContext';
 
 const MainLayout: React.FC = () => {
+  const { isDarkMode } = useMusic();
+  
   return (
-    <div className="min-h-screen">
-      <div className="flex bg-background h-screen overflow-hidden">
+    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+      <div className="flex dark:bg-gray-900 h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">

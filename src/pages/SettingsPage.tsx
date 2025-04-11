@@ -1,11 +1,13 @@
-
 import React from 'react';
+import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
 import { useMusic } from '../context/MusicContext';
 import MiniPlayer from '../components/MiniPlayer';
-import { Volume2, Award, Shield, Bell, Languages, Download } from 'lucide-react';
+import { Moon, Sun, Volume2, Award, Shield, Bell, Languages, Download } from 'lucide-react';
 
 const SettingsContent: React.FC = () => {
+  const { isDarkMode, toggleDarkMode } = useMusic();
+  
   return (
     <div className="w-full p-6">
       <div className="max-w-4xl mx-auto">
@@ -52,6 +54,19 @@ const SettingsContent: React.FC = () => {
           <div className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden">
             <div className="p-4 border-b border-white/10">
               <h2 className="text-xl font-semibold">Preferences</h2>
+            </div>
+            
+            <div className="flex justify-between items-center p-4 border-b border-white/10">
+              <div className="flex items-center gap-3">
+                {isDarkMode ? <Moon className="text-coral" size={20} /> : <Sun className="text-yellow" size={20} />}
+                <span>Theme</span>
+              </div>
+              <button 
+                onClick={toggleDarkMode}
+                className="flex items-center gap-2 bg-white/10 py-1 px-3 rounded-full text-sm hover:bg-white/20 transition-colors"
+              >
+                {isDarkMode ? 'Dark' : 'Light'}
+              </button>
             </div>
             
             <div className="flex justify-between items-center p-4 border-b border-white/10">
@@ -132,9 +147,11 @@ const SettingsContent: React.FC = () => {
 };
 
 const SettingsPage: React.FC = () => {
+  const { isDarkMode } = useMusic();
+  
   return (
-    <div className="min-h-screen">
-      <div className="flex bg-background h-screen overflow-hidden">
+    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+      <div className="flex dark:bg-gray-900 h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
