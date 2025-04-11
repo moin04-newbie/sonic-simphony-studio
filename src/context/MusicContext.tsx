@@ -57,7 +57,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   // Update audio source when song changes
   useEffect(() => {
     if (currentSong && audioRef.current) {
-      // If the song has an audio property, use it; otherwise default to a placeholder
+      // If the song has a specific audio URL use it, otherwise use a default one
       const audioSource = currentSong.audio || 'https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3';
       audioRef.current.src = audioSource;
       

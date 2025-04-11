@@ -1,12 +1,11 @@
 
 import React from 'react';
-import { Home, Search, Library, Settings, User, Moon, Sun } from 'lucide-react';
+import { Home, Search, Library, Settings, User } from 'lucide-react';
 import { useMusic } from '../context/MusicContext';
 import { cn } from '../lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar: React.FC = () => {
-  const { isDarkMode, toggleDarkMode } = useMusic();
   const location = useLocation();
 
   return (
@@ -49,14 +48,6 @@ const Sidebar: React.FC = () => {
           active={location.pathname === '/settings'} 
         />
       </nav>
-      
-      <button
-        onClick={toggleDarkMode}
-        className="mt-auto mb-6 p-3 rounded-full hover:bg-sidebar-accent transition-colors duration-300"
-        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-      </button>
     </div>
   );
 };
