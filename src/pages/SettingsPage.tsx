@@ -134,23 +134,25 @@ const SettingsContent: React.FC = () => {
 
 const SettingsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
-      <div className="flex h-screen overflow-hidden">
-        <Sidebar />
-        
-        <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
-          <div className="flex flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto">
-              <SettingsContent />
+    <MusicProvider>
+      <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+        <div className="flex h-screen overflow-hidden">
+          <Sidebar />
+          
+          <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
+            <div className="flex flex-1 overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                <SettingsContent />
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="lg:hidden">
-          <MiniPlayer />
+          
+          <div className="lg:hidden">
+            <MiniPlayer />
+          </div>
         </div>
       </div>
-    </div>
+    </MusicProvider>
   );
 };
 
