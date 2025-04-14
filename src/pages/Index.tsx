@@ -9,13 +9,13 @@ import { MusicProvider } from '../context/MusicContext';
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5]">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="flex h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
           {/* Top genre tabs */}
-          <div className="sticky top-0 bg-white/80 backdrop-blur-md z-10 pt-4">
+          <div className="sticky top-0 bg-black/80 backdrop-blur-md z-10 pt-4">
             <GenreTabs />
           </div>
           

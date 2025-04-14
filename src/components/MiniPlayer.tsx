@@ -15,6 +15,10 @@ const MiniPlayer: React.FC = () => {
           src={currentSong.image} 
           alt={currentSong.title} 
           className="w-full h-full object-cover"
+          loading="eager"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop";
+          }}
         />
       </div>
       

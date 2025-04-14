@@ -51,7 +51,7 @@ const MainContent: React.FC = () => {
 };
 
 interface SongCardProps {
-  song: Song; // Using the Song interface imported from mockData.ts
+  song: Song;
 }
 
 const SongCard: React.FC<SongCardProps> = ({ song }) => {
@@ -75,6 +75,9 @@ const SongCard: React.FC<SongCardProps> = ({ song }) => {
           alt={song.title} 
           className="w-full h-full object-cover" 
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop";
+          }}
         />
       </div>
       <div className="flex-1 min-w-0">
