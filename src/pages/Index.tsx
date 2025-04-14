@@ -9,7 +9,7 @@ import { MusicProvider } from '../context/MusicContext';
 
 const MainLayout: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5]">
       <div className="flex h-screen overflow-hidden">
         <Sidebar />
         

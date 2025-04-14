@@ -65,13 +65,14 @@ const Player: React.FC = () => {
       <div className="w-full flex justify-center mb-6">
         <div 
           ref={vinylRef}
-          className="vinyl-record animate-spin-slow w-48 h-48"
+          className="vinyl-record animate-spin-slow w-48 h-48 relative"
           style={{ animationPlayState: isPlaying ? 'running' : 'paused' }}
         >
           <img 
             src={currentSong.image}
             alt={currentSong.title}
             className="w-1/2 h-1/2 absolute top-1/4 left-1/4 rounded-full object-cover"
+            loading="eager"
           />
         </div>
       </div>
@@ -135,7 +136,7 @@ const Player: React.FC = () => {
           <div
             key={index}
             className={cn(
-              "waveform-bar transition-all duration-100",
+              "waveform-bar mx-0.5 w-1 transition-all duration-100",
               bar.isPlayed ? "bg-coral" : "bg-gray-400"
             )}
             style={{ height: bar.height }}

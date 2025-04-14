@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
@@ -24,7 +25,7 @@ const LibraryContent: React.FC = () => {
                 <PlusCircle size={18} />
                 <span>New Playlist</span>
               </button>
-              <div className="flex bg-white/10 rounded-lg overflow-hidden">
+              <div className="flex bg-white/10 backdrop-blur-md rounded-lg overflow-hidden">
                 <button 
                   onClick={() => setViewMode('grid')} 
                   className={`p-2 ${viewMode === 'grid' ? 'bg-coral text-white' : 'hover:bg-white/5'}`}
@@ -75,6 +76,7 @@ const LibraryContent: React.FC = () => {
                         src={playlist.coverImage} 
                         alt={playlist.title} 
                         className="w-full h-full object-cover transition-transform hover:scale-110 duration-700"
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-3">
@@ -92,7 +94,12 @@ const LibraryContent: React.FC = () => {
                     className={`flex items-center p-4 hover:bg-white/5 transition-colors ${index !== playlists.length - 1 ? 'border-b border-white/10' : ''}`}
                   >
                     <div className="w-12 h-12 rounded overflow-hidden mr-4">
-                      <img src={playlist.coverImage} alt={playlist.title} className="w-full h-full object-cover" />
+                      <img 
+                        src={playlist.coverImage} 
+                        alt={playlist.title} 
+                        className="w-full h-full object-cover" 
+                        loading="lazy"
+                      />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-medium">{playlist.title}</h3>
@@ -115,7 +122,12 @@ const LibraryContent: React.FC = () => {
                 >
                   <div className="w-8 text-center mr-4 opacity-70">{index + 1}</div>
                   <div className="w-12 h-12 rounded overflow-hidden mr-4">
-                    <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+                    <img 
+                      src={song.image} 
+                      alt={song.title} 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-medium">{song.title}</h3>
@@ -144,7 +156,12 @@ const LibraryContent: React.FC = () => {
                     <Clock size={16} />
                   </div>
                   <div className="w-12 h-12 rounded overflow-hidden mr-4">
-                    <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+                    <img 
+                      src={song.image} 
+                      alt={song.title} 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-medium">{song.title}</h3>
@@ -165,23 +182,25 @@ const LibraryContent: React.FC = () => {
 
 const LibraryPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
-      <div className="flex h-screen overflow-hidden">
-        <Sidebar />
-        
-        <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
-          <div className="flex flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto">
-              <LibraryContent />
+    <MusicProvider>
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5]">
+        <div className="flex h-screen overflow-hidden">
+          <Sidebar />
+          
+          <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
+            <div className="flex flex-1 overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                <LibraryContent />
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="lg:hidden">
-          <MiniPlayer />
+          
+          <div className="lg:hidden">
+            <MiniPlayer />
+          </div>
         </div>
       </div>
-    </div>
+    </MusicProvider>
   );
 };
 

@@ -15,6 +15,7 @@ const MiniPlayer: React.FC = () => {
           src={currentSong.image} 
           alt={currentSong.title} 
           className="w-full h-full object-cover"
+          loading="eager"
         />
       </div>
       

@@ -25,6 +25,7 @@ const MostPlayedTrack: React.FC = () => {
           src={mostPlayedTrack.image} 
           alt={mostPlayedTrack.title}
           className="w-full h-full object-cover"
+          loading="eager"
         />
       </div>
       

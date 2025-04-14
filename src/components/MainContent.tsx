@@ -70,7 +70,12 @@ const SongCard: React.FC<SongCardProps> = ({ song }) => {
   return (
     <div className="flex items-center p-3 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 group">
       <div className="w-12 h-12 rounded-md overflow-hidden mr-3">
-        <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+        <img 
+          src={song.image} 
+          alt={song.title} 
+          className="w-full h-full object-cover" 
+          loading="lazy"
+        />
       </div>
       <div className="flex-1 min-w-0">
         <h3 className="font-medium truncate">{song.title}</h3>

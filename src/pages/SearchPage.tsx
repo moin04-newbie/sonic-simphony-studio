@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
@@ -60,7 +61,12 @@ const SearchContent: React.FC = () => {
                   className="flex items-center p-3 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 cursor-pointer group"
                 >
                   <div className="w-12 h-12 rounded-md overflow-hidden mr-3">
-                    <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+                    <img 
+                      src={song.image} 
+                      alt={song.title} 
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-medium truncate">{song.title}</h3>
@@ -129,23 +135,25 @@ const SearchContent: React.FC = () => {
 
 const SearchPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
-      <div className="flex h-screen overflow-hidden">
-        <Sidebar />
-        
-        <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
-          <div className="flex flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto">
-              <SearchContent />
+    <MusicProvider>
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5]">
+        <div className="flex h-screen overflow-hidden">
+          <Sidebar />
+          
+          <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
+            <div className="flex flex-1 overflow-hidden">
+              <div className="flex-1 overflow-y-auto">
+                <SearchContent />
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div className="lg:hidden">
-          <MiniPlayer />
+          
+          <div className="lg:hidden">
+            <MiniPlayer />
+          </div>
         </div>
       </div>
-    </div>
+    </MusicProvider>
   );
 };
 
