@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Play } from 'lucide-react';
-import { Playlist } from '../data/mockData';
+import { Playlist, songs } from '../data/mockData';
 import { useMusic } from '../context/MusicContext';
 
 interface PlaylistCardProps {
@@ -16,7 +16,12 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ playlist }) => {
     
     // Play the first song from the playlist
     if (playlist.songs.length > 0) {
-      playSong(playlist.songs[0]);
+      // Find the song object using the ID from the playlist
+      const firstSongId = playlist.songs[0];
+      const songToPlay = songs.find(song => song.id === firstSongId);
+      if (songToPlay) {
+        playSong(songToPlay);
+      }
     }
   };
   
@@ -37,7 +42,12 @@ const PlaylistCard: React.FC<PlaylistCardProps> = ({ playlist }) => {
           onClick={(e) => {
             e.stopPropagation();
             if (playlist.songs.length > 0) {
-              playSong(playlist.songs[0]);
+              // Find the song object using the ID from the playlist
+              const firstSongId = playlist.songs[0];
+              const songToPlay = songs.find(song => song.id === firstSongId);
+              if (songToPlay) {
+                playSong(songToPlay);
+              }
             }
           }}
         >

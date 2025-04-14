@@ -1,3 +1,4 @@
+
 // Here we're including mock data for the application
 
 // Song interface definition
@@ -22,6 +23,17 @@ export interface Playlist {
   coverImage: string;
   songs: string[]; // Array of song IDs
 }
+
+// Genre colors mapping for UI theming
+export const genreColors: Record<string, string> = {
+  "All": "#8B5CF6",
+  "Lo-fi": "#F97316",
+  "Jazz": "#0EA5E9",
+  "Pop": "#D946EF",
+  "Rock": "#EC4899",
+  "Hip Hop": "#14B8A6",
+  "Electronic": "#6366F1"
+};
 
 // Available genres
 export const genres = [

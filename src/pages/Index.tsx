@@ -5,7 +5,7 @@ import GenreTabs from '../components/GenreTabs';
 import MainContent from '../components/MainContent';
 import Player from '../components/Player';
 import MiniPlayer from '../components/MiniPlayer';
-import { useMusic } from '../context/MusicContext';
+import { MusicProvider } from '../context/MusicContext';
 
 const MainLayout: React.FC = () => {
   return (
@@ -45,7 +45,12 @@ const MainLayout: React.FC = () => {
 };
 
 const Index: React.FC = () => {
-  return <MainLayout />;
+  // Wrap the MainLayout with MusicProvider here
+  return (
+    <MusicProvider>
+      <MainLayout />
+    </MusicProvider>
+  );
 };
 
 export default Index;
