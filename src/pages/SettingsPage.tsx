@@ -135,7 +135,7 @@ const SettingsContent: React.FC = () => {
 const SettingsPage: React.FC = () => {
   return (
     <MusicProvider>
-      <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
           

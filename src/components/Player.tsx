@@ -72,7 +72,6 @@ const Player: React.FC = () => {
             src={currentSong.image}
             alt={currentSong.title}
             className="w-1/2 h-1/2 absolute top-1/4 left-1/4 rounded-full object-cover"
-            loading="eager"
           />
         </div>
       </div>

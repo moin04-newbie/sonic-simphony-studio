@@ -183,7 +183,7 @@ const LibraryContent: React.FC = () => {
 const LibraryPage: React.FC = () => {
   return (
     <MusicProvider>
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5]">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
           

@@ -2,121 +2,109 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-  }
- 
-  * {
-    @apply border-border;
-  }
-  
-  body {
-    @apply bg-gradient-to-br from-[#F5F7FA] to-[#E4EBF5] text-foreground;
-  }
 
-  /* Custom styles for the vinyl record animation */
-  .vinyl-record {
-    border-radius: 50%;
-    background: linear-gradient(145deg, #000, #333);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    animation: spin 20s linear infinite;
-    position: relative;
-  }
+:root {
+  --coral: #FF7043;
+  --teal: #26A69A;
+  --cyan: #00BCD4;
+  --yellow: #FFCA28;
+}
 
-  .vinyl-record::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle at center,
-      transparent 15%,
-      rgba(0, 0, 0, 0.7) 15.5%,
-      transparent 16%,
-      transparent 20%,
-      rgba(0, 0, 0, 0.5) 20.5%,
-      transparent 21%,
-      transparent 25%,
-      rgba(0, 0, 0, 0.3) 25.5%,
-      transparent 26%,
-      transparent 30%,
-      rgba(0, 0, 0, 0.2) 30.5%,
-      transparent 31%
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: white;
+  background-color: #121212;
+  overflow: hidden;
+}
 
-  .waveform-bar {
-    width: 4px;
-    margin: 0 1px;
-    border-radius: 2px;
-    transition: all 0.1s ease-in-out;
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-  /* Custom animations */
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
 
-  @keyframes pulse-glow {
-    0% {
-      opacity: 0.8;
-      text-shadow: 0 0 5px rgba(255, 112, 67, 0.5);
-    }
-    50% {
-      opacity: 1;
-      text-shadow: 0 0 20px rgba(255, 112, 67, 0.8);
-    }
-    100% {
-      opacity: 0.8;
-      text-shadow: 0 0 5px rgba(255, 112, 67, 0.5);
-    }
-  }
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
 
-  .animate-spin-slow {
-    animation: spin 8s linear infinite;
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
   }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 112, 67, 0.8);
+  }
+}
 
-  .animate-pulse-glow {
-    animation: pulse-glow 2s infinite;
-  }
+.text-coral {
+  color: var(--coral);
+}
 
-  /* Glassmorphism effects */
-  .bg-coral {
-    background-color: #FF7043;
-  }
+.text-teal {
+  color: var(--teal);
+}
 
-  .to-teal {
-    --tw-gradient-to: #26A69A;
-  }
+.text-cyan {
+  color: var(--cyan);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.bg-coral {
+  background-color: var(--coral);
+}
+
+.bg-teal {
+  background-color: var(--teal);
+}
+
+.vinyl-record {
+  position: relative;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #000000, #333333);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vinyl-record::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: repeating-radial-gradient(
+    circle at center,
+    rgba(30, 30, 30, 0.2) 0,
+    rgba(30, 30, 30, 0.3) 2px,
+    transparent 3px,
+    transparent 6px
+  );
+  border-radius: inherit;
+}
+
+.vinyl-record::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background: #888;
+  border-radius: 50%;
+  border: 2px solid #444;
 }
