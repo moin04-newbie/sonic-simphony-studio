@@ -60,6 +60,7 @@ export const songs: Song[] = [
     image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop",
     album: "Midnight Thoughts",
     year: 2023,
+    audio: "https://cdn.trendybeatz.com/audio/Imagine-Dragons-Bad-Liar-(TrendyBeatz.com).mp3",
     lyrics: [
       "Your eyes reflect the sky",
       "Lost in the quiet night",

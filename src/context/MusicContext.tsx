@@ -1,5 +1,5 @@
 
-import React, { createContext, useState, ReactNode, useContext } from 'react';
+import React, { createContext, useState, ReactNode, useContext, useRef, useEffect } from 'react';
 import { Song, songs, genres, playlists, mostPlayedTrack } from '../data/mockData';
 
 interface MusicContextType {
@@ -11,7 +11,6 @@ interface MusicContextType {
   volume: number;
   lyrics: string[];
   currentLyricIndex: number;
-  isDarkMode: boolean;
   playSong: (song: Song) => void;
   pauseSong: () => void;
   togglePlay: () => void;
@@ -21,7 +20,6 @@ interface MusicContextType {
   selectPlaylist: (playlistId: string | null) => void;
   nextSong: () => void;
   previousSong: () => void;
-  toggleDarkMode: () => void;
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
@@ -34,7 +32,60 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [progress, setProgress] = useState<number>(0);
   const [volume, setVolume] = useState<number>(80);
   const [currentLyricIndex, setCurrentLyricIndex] = useState<number>(0);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  
+  // Audio player reference
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
+  // Initialize audio element
+  useEffect(() => {
+    audioRef.current = new Audio();
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+  
+  // Handle volume changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
+  
+  // Handle song changes
+  useEffect(() => {
+    if (currentSong && audioRef.current) {
+      // Check if the song has an audio property
+      if (currentSong.audio) {
+        audioRef.current.src = currentSong.audio;
+        if (isPlaying) {
+          audioRef.current.play().catch(error => {
+            console.error("Error playing audio:", error);
+            setIsPlaying(false);
+          });
+        }
+      } else {
+        // If no audio URL is available, just update the UI state
+        console.warn(`No audio URL available for song: ${currentSong.title}`);
+      }
+    }
+  }, [currentSong]);
+  
+  // Handle play/pause state changes
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play().catch(error => {
+          console.error("Error playing audio:", error);
+          setIsPlaying(false);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   // Mock lyrics display - would be time-based in a real app
   React.useEffect(() => {
@@ -97,10 +148,6 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     playSong(allSongs[prevIndex]);
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
-  };
-
   const value = {
     currentSong,
     isPlaying,
@@ -110,7 +157,6 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     volume,
     lyrics: currentSong?.lyrics || [],
     currentLyricIndex,
-    isDarkMode,
     playSong,
     pauseSong,
     togglePlay,
@@ -119,8 +165,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     selectGenre,
     selectPlaylist,
     nextSong,
-    previousSong,
-    toggleDarkMode
+    previousSong
   };
 
   return (
