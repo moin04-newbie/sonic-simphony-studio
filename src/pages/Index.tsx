@@ -8,16 +8,14 @@ import MiniPlayer from '../components/MiniPlayer';
 import { useMusic } from '../context/MusicContext';
 
 const MainLayout: React.FC = () => {
-  const { isDarkMode } = useMusic();
-  
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <div className="flex dark:bg-gray-900 h-screen overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+      <div className="flex h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
           {/* Top genre tabs */}
-          <div className="sticky top-0 bg-background/80 backdrop-blur-md z-10 pt-4">
+          <div className="sticky top-0 bg-white/80 backdrop-blur-md z-10 pt-4">
             <GenreTabs />
           </div>
           
@@ -29,7 +27,7 @@ const MainLayout: React.FC = () => {
             </div>
             
             {/* Right player panel */}
-            <div className="w-0 lg:w-72 xl:w-80 border-l border-white/10 flex-shrink-0 overflow-auto hidden lg:block">
+            <div className="w-0 lg:w-72 xl:w-80 border-l border-white/20 flex-shrink-0 overflow-auto hidden lg:block">
               <div className="p-4 flex justify-center h-full">
                 <Player />
               </div>

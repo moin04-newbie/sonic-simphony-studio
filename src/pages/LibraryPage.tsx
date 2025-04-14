@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MusicProvider } from '../context/MusicContext';
 import Sidebar from '../components/Sidebar';
@@ -165,11 +164,9 @@ const LibraryContent: React.FC = () => {
 };
 
 const LibraryPage: React.FC = () => {
-  const { isDarkMode } = useMusic();
-  
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <div className="flex dark:bg-gray-900 h-screen overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+      <div className="flex h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">

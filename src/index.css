@@ -37,37 +37,6 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 14 99% 63%;
   }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 14 99% 63%;  /* Coral shade */
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 174 48% 52%;  /* Teal shade */
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 42 91% 75%;  /* Yellow shade */
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 4 90% 58%;  /* Red shade */
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 14 99% 63%;  /* Coral shade */
-    
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 14 99% 63%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 14 99% 63%;
-  }
 }
 
 @layer base {
@@ -76,7 +45,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-transparent text-foreground font-poppins;
   }
 }
 
@@ -105,5 +74,18 @@
   
   .waveform-bar {
     @apply rounded-full w-1 inline-block bg-coral mx-[1px];
+  }
+  
+  /* New aesthetic classes */
+  .aesthetic-gradient {
+    @apply bg-gradient-to-r from-purple-400 via-pink-500 to-red-500;
+  }
+  
+  .aesthetic-button {
+    @apply bg-white/20 backdrop-blur-md hover:bg-white/30 transition-all duration-300 rounded-xl px-5 py-2 border border-white/20;
+  }
+  
+  .aesthetic-card {
+    @apply bg-white/20 backdrop-blur-xl border border-white/20 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
   }
 }

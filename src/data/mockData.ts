@@ -1,440 +1,312 @@
+// Here we're including mock data for the application
 
-// Mock data for the music streaming app
-
+// Song interface definition
 export interface Song {
   id: string;
   title: string;
   artist: string;
   genre: string;
-  mood: string;
   duration: string;
   image: string;
-  lyrics: string[];
   album?: string;
   year?: number;
+  audio?: string; // Added audio property to Song interface
+  lyrics: string[];
 }
 
+// Playlist interface definition
 export interface Playlist {
   id: string;
   title: string;
   description: string;
   coverImage: string;
-  songs: Song[];
+  songs: string[]; // Array of song IDs
 }
 
+// Available genres
 export const genres = [
   "All",
-  "Old is Gold",
-  "90s Love",
-  "Bollywood",
+  "Lo-fi",
+  "Jazz",
   "Pop",
   "Rock",
   "Hip Hop",
-  "Electronic",
-  "Lo-fi",
-  "Jazz"
+  "Electronic"
 ];
 
-// Genre background colors
-export const genreColors = {
-  "All": "#6a11cb", // Purple gradient
-  "Old is Gold": "#FFB347", // Vintage orange
-  "90s Love": "#FF69B4", // Hot pink
-  "Bollywood": "#FF7043", // Coral
-  "Pop": "#4DB6AC", // Teal
-  "Rock": "#b92b27", // Crimson red
-  "Hip Hop": "#2C3E50", // Dark blue
-  "Electronic": "#00ACC1", // Cyan
-  "Lo-fi": "#8E44AD", // Purple
-  "Jazz": "#F39C12"  // Amber
-};
-
+// Mock songs data
 export const songs: Song[] = [
   {
-    id: "song-001",
-    title: "Your Eyes",
-    artist: "Barney Sku ft. Taqiya Zaman",
+    id: "s001",
+    title: "Drifting Away",
+    artist: "Midnight Collective",
     genre: "Lo-fi",
-    mood: "Chill",
-    duration: "3:25",
-    image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop",
-    album: "Midnight Thoughts",
-    year: 2023,
-    audio: "https://cdn.trendybeatz.com/audio/Imagine-Dragons-Bad-Liar-(TrendyBeatz.com).mp3",
-    lyrics: [
-      "Your eyes reflect the sky",
-      "Lost in the quiet night",
-      "Whispers echo the stars",
-      "Wonder where we are",
-      "Your eyes, like moonlight beams",
-      "Guiding through my dreams",
-      "Time stops when we're apart",
-      "Your eyes are where I start",
-      "And I've been searching for answers",
-      "Looking for a sign",
-      "But all I need to discover",
-      "Is right there in your eyes",
-      "Your eyes tell stories untold",
-      "Secrets of our souls",
-      "Dancing in the light",
-      "Shining oh so bright"
-    ]
-  },
-  {
-    id: "song-002",
-    title: "Summer Daze",
-    artist: "Lily Chen",
-    genre: "Pop",
-    mood: "Happy",
-    duration: "2:58",
-    image: "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?q=80&w=300&auto=format&fit=crop",
-    album: "Sunset Memories",
+    duration: "4:12",
+    image: "https://images.unsplash.com/photo-1606761940304-129c8ab9beca?q=80&w=300&auto=format&fit=crop",
+    album: "Late Night Vibes",
     year: 2022,
+    audio: "https://cdn.trendybeatz.com/audio/Rema-Calm-Down-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Summer breeze, feeling free",
-      "Golden sand beneath my feet",
-      "Ocean waves crash and play",
-      "Perfect vibes all day",
-      "Sunshine bright, warming my soul",
-      "Summer stories yet untold",
-      "Living life without a care",
-      "Sweet moments everywhere"
+      "City lights blur in the rain",
+      "Another night, same old pain",
+      "But in my dreams, I fly away",
+      "To a place where I can stay"
     ]
   },
   {
-    id: "song-003",
-    title: "Midnight Drive",
-    artist: "Alex Storm",
-    genre: "Electronic",
-    mood: "Energetic",
-    duration: "4:15",
-    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=300&auto=format&fit=crop",
-    album: "Neon Roads",
-    year: 2023,
-    lyrics: [
-      "Headlights cutting through the dark",
-      "City lights like scattered stars",
-      "Music loud, heart beating fast",
-      "Making moments that will last",
-      "Midnight drive, no destination",
-      "Pure freedom, no limitation",
-      "Racing thoughts begin to slow",
-      "Just the road and where we'll go"
-    ]
-  },
-  {
-    id: "song-004",
-    title: "Rainy Day Blues",
-    artist: "Marcus Green",
+    id: "s002",
+    title: "Smooth Sailing",
+    artist: "The Jazz Pioneers",
     genre: "Jazz",
-    mood: "Sad",
-    duration: "5:32",
-    image: "https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?q=80&w=300&auto=format&fit=crop",
-    album: "Urban Melodies",
-    year: 2021,
-    lyrics: [
-      "Raindrops falling on my window pane",
-      "Each one carries memories and pain",
-      "Jazz notes floating through the air",
-      "Soothing souls in deep despair",
-      "The city looks different in the rain",
-      "Reflections, distortions, not the same",
-      "These rainy day blues won't go away",
-      "Just sitting here waiting for a sunny day"
-    ]
-  },
-  {
-    id: "song-005",
-    title: "Desert Rose",
-    artist: "Luna Pearl",
-    genre: "World",
-    mood: "Chill",
-    duration: "3:47",
-    image: "https://images.unsplash.com/photo-1485579149621-3123dd979885?q=80&w=300&auto=format&fit=crop",
-    album: "Global Rhythms",
-    year: 2023,
-    lyrics: [
-      "Desert winds carry ancient tales",
-      "Through golden sands and dusty veils",
-      "Rose blooming where none should grow",
-      "Nature's strength in full show",
-      "Under stars that light the night",
-      "Whispered prayers take flight",
-      "Desert rose so rare and bold",
-      "Your story deserves to be told"
-    ]
-  },
-  {
-    id: "song-006",
-    title: "City Lights",
-    artist: "Neon Dreams",
-    genre: "Synthwave",
-    mood: "Energetic",
-    duration: "4:05",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=300&auto=format&fit=crop",
-    album: "Retrowave Nights",
-    year: 2022,
-    lyrics: [
-      "Neon signs illuminate the night",
-      "City pulse beating with delight",
-      "Skyscrapers reaching for the stars",
-      "Late-night diners and busy bars",
-      "Lost in the rhythm of urban life",
-      "Electric energy cutting like a knife",
-      "City lights guiding me home",
-      "Through streets I love to roam"
-    ]
-  },
-  {
-    id: "song-007",
-    title: "Mountain Echo",
-    artist: "Forest Whispers",
-    genre: "Acoustic",
-    mood: "Peaceful",
-    duration: "4:38",
-    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=300&auto=format&fit=crop",
-    album: "Natural Wonders",
-    year: 2020,
-    lyrics: [
-      "Standing tall against the sky",
-      "Majestic peaks reaching high",
-      "Echo of my voice returns",
-      "While the sunset gently burns",
-      "Ancient wisdom in the stone",
-      "Teaching me I'm not alone",
-      "Mountain spirits guide my way",
-      "Through the mist of breaking day"
-    ]
-  },
-  {
-    id: "song-008",
-    title: "Velvet Groove",
-    artist: "Smooth Operators",
-    genre: "R&B",
-    mood: "Chill",
-    duration: "3:55",
-    image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=300&auto=format&fit=crop",
-    album: "Silky Soul",
-    year: 2023,
-    lyrics: [
-      "Velvet voice, silky smooth",
-      "Got me in a special mood",
-      "Bass line deep, rhythm tight",
-      "Perfect groove for tonight",
-      "Candle light, wine so fine",
-      "Everything feels divine",
-      "Lost in the velvet groove",
-      "No desire to move or prove"
-    ]
-  },
-  // Additional songs for different genres
-  {
-    id: "song-009",
-    title: "Yesterday's Memory",
-    artist: "The Vintage Collective",
-    genre: "Old is Gold",
-    mood: "Nostalgic",
-    duration: "3:15",
-    image: "https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?q=80&w=300&auto=format&fit=crop",
-    album: "Golden Classics",
+    duration: "5:21",
+    image: "https://images.unsplash.com/photo-1508700942705-55a98ab0e4ca?q=80&w=300&auto=format&fit=crop",
+    album: "Timeless Classics",
     year: 1968,
+    audio: "https://cdn.trendybeatz.com/audio/Davido-Feel-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Memories of yesterday",
-      "Golden times that fade away",
-      "But in my mind they'll always stay",
-      "Precious moments day by day",
-      "The summer sun, the autumn leaves",
-      "Winter snow and spring's reprieve",
-      "A lifetime passed before my eyes",
-      "Holding on to goodbye's"
+      "The sax plays on, a sweet refrain",
+      "In smoky rooms, we ease the pain",
+      "With every note, a memory",
+      "Of love and loss, eternally"
     ]
   },
   {
-    id: "song-010",
-    title: "Love Letter",
-    artist: "Heartbeats",
-    genre: "90s Love",
-    mood: "Romantic",
-    duration: "4:22",
-    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=300&auto=format&fit=crop",
-    album: "Forever Yours",
-    year: 1997,
+    id: "s003",
+    title: "Sunset Boulevard",
+    artist: "Indie Pop Stars",
+    genre: "Pop",
+    duration: "3:55",
+    image: "https://images.unsplash.com/photo-1533628779413-97959653916e?q=80&w=300&auto=format&fit=crop",
+    album: "Summer Anthems",
+    year: 2023,
+    audio: "https://cdn.trendybeatz.com/audio/Omah-Lay-Reason-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Writing down these words for you",
-      "Hoping that they will come true",
-      "My heart speaks what my lips can't say",
-      "Dreaming of you night and day",
-      "This letter carries all my love",
-      "Pure as the stars above",
-      "Hold it close, feel me near",
-      "My love for you is sincere"
+      "Driving down Sunset, windows down",
+      "Chasing dreams in this lonely town",
+      "Hoping for a break, a lucky sign",
+      "Underneath the California shine"
     ]
   },
   {
-    id: "song-011",
-    title: "Dil Se",
-    artist: "Ananya Sharma",
-    genre: "Bollywood",
-    mood: "Emotional",
-    duration: "5:10",
-    image: "https://images.unsplash.com/photo-1626788353762-c49dcb8c5845?q=80&w=300&auto=format&fit=crop",
-    album: "Pyaar Ka Safar",
-    year: 2022,
-    lyrics: [
-      "Tum mere dil mein ho",
-      "Har dhadkan mein ho tum",
-      "Meri har saans mein",
-      "Bas tum hi tum ho",
-      "Aankhen band karoon",
-      "To bhi dikhte ho tum",
-      "Kaise kahoon main",
-      "Tumse kitna pyaar hai"
-    ]
-  },
-  {
-    id: "song-012",
-    title: "Rock Revolution",
-    artist: "Electric Thunder",
+    id: "s004",
+    title: "Riff Master",
+    artist: "Rock Titans",
     genre: "Rock",
-    mood: "Energetic",
-    duration: "3:48",
-    image: "https://images.unsplash.com/photo-1565035010268-a3816f98589a?q=80&w=300&auto=format&fit=crop",
-    album: "Rebellion",
-    year: 2021,
+    duration: "4:30",
+    image: "https://images.unsplash.com/photo-1549480493-53e81a17694a?q=80&w=300&auto=format&fit=crop",
+    album: "Stadium Rock",
+    year: 1985,
+    audio: "https://cdn.trendybeatz.com/audio/Asake-Amapiano-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Breaking free from chains that bind",
-      "Leaving all the pain behind",
-      "Guitar screams, drums explode",
-      "Revolution mode",
-      "We are the voice that won't be silenced",
-      "We are the beat of defiance",
-      "Rock and roll in our veins",
-      "Freedom has no restrains"
+      "Guitar screams, the crowd goes wild",
+      "A sea of faces, every child",
+      "Lost in the music, the driving beat",
+      "Rock and roll, can't be beat"
     ]
   },
   {
-    id: "song-013",
-    title: "Flow State",
-    artist: "MC Logic",
+    id: "s005",
+    title: "City Heights",
+    artist: "Urban Beats Crew",
     genre: "Hip Hop",
-    mood: "Confident",
-    duration: "3:24",
-    image: "https://images.unsplash.com/photo-1571609803510-71493b8d7834?q=80&w=300&auto=format&fit=crop",
-    album: "Mind Games",
+    duration: "3:20",
+    image: "https://images.unsplash.com/photo-1516235692448-1e5b97346591?q=80&w=300&auto=format&fit=crop",
+    album: "Street Anthems",
+    year: 2021,
+    audio: "https://cdn.trendybeatz.com/audio/Kizz-Daniel-Twe-Twe-(TrendyBeatz.com).mp3",
+    lyrics: [
+      "Concrete jungle, where dreams are made",
+      "Hustle hard, never be afraid",
+      "From the streets, we rise above",
+      "In hip hop, we find our love"
+    ]
+  },
+  {
+    id: "s006",
+    title: "Electric Dreams",
+    artist: "Synth Wizards",
+    genre: "Electronic",
+    duration: "6:05",
+    image: "https://images.unsplash.com/photo-1611262584375-53595ba133f1?q=80&w=300&auto=format&fit=crop",
+    album: "Future Sounds",
+    year: 2024,
+    audio: "https://cdn.trendybeatz.com/audio/Burna-Boy-City-Boys-(TrendyBeatz.com).mp3",
+    lyrics: [
+      "Synthesizers hum, a digital trance",
+      "In the club, we lose our chance",
+      "To find ourselves, in the neon glow",
+      "Electronic beats, help us flow"
+    ]
+  },
+  {
+    id: "s007",
+    title: "Misty Morning",
+    artist: "Chill Study Beats",
+    genre: "Lo-fi",
+    duration: "3:50",
+    image: "https://images.unsplash.com/photo-1531867563544-c163684ddc7d?q=80&w=300&auto=format&fit=crop",
+    album: "Cozy Vibes",
+    year: 2022,
+    audio: "https://cdn.trendybeatz.com/audio/Ayra-Starr-Rhythm-Blues-(TrendyBeatz.com).mp3",
+    lyrics: [
+      "Coffee steams, the day begins",
+      "With gentle tunes, washing over sins",
+      "In every note, a peaceful sign",
+      "Lo-fi beats, make everything fine"
+    ]
+  },
+  {
+    id: "s008",
+    title: "Saxophone Serenade",
+    artist: "Jazzy Moods",
+    genre: "Jazz",
+    duration: "4:45",
+    image: "https://images.unsplash.com/photo-1576897390395-f454a19b1110?q=80&w=300&auto=format&fit=crop",
+    album: "Midnight Jazz",
+    year: 1975,
+    audio: "https://cdn.trendybeatz.com/audio/Wizkid-IDK-(TrendyBeatz.com).mp3",
+    lyrics: [
+      "Saxophone sings, a soulful plea",
+      "In dimly lit bars, we feel so free",
+      "With every chord, a story told",
+      "Jazz music, never gets old"
+    ]
+  },
+  {
+    id: "s009",
+    title: "Summer Love",
+    artist: "Teen Pop Sensations",
+    genre: "Pop",
+    duration: "3:30",
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=300&auto=format&fit=crop",
+    album: "Beach Party",
     year: 2023,
+    audio: "https://cdn.trendybeatz.com/audio/Young-Jonn-Aquafina-(TrendyBeatz.com).mp3",
     lyrics: [
-      "In the zone, mind flowing free",
-      "Words connecting, rhythmically",
-      "Beats drop hard, hearts beat fast",
-      "Present moment, forget the past",
-      "Rhymes unfold like stories told",
-      "New perspectives, truth unfolds",
-      "This is more than music man",
-      "This is life's master plan"
+      "Sun-kissed skin, and ocean breeze",
+      "Summer love, puts us at ease",
+      "With every touch, a sweet delight",
+      "Pop songs play, all through the night"
     ]
   },
   {
-    id: "song-014",
-    title: "Starlight Sonata",
-    artist: "The Classical Experience",
-    genre: "Old is Gold",
-    mood: "Peaceful",
-    duration: "6:15",
-    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=300&auto=format&fit=crop",
-    album: "Timeless Tales",
-    year: 1952,
+    id: "s010",
+    title: "Guitar Hero",
+    artist: "Metal Gods",
+    genre: "Rock",
+    duration: "5:10",
+    image: "https://images.unsplash.com/photo-1551859004-a3b5115f45b6?q=80&w=300&auto=format&fit=crop",
+    album: "Headbangers Ball",
+    year: 1990,
+    audio: "https://cdn.trendybeatz.com/audio/Spyro-Who-Is-Your-Guy-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Instrumental piece",
-      "No lyrics for this classical composition"
+      "Heavy riffs, shake the ground",
+      "Metal gods, all around",
+      "With every solo, a burning fire",
+      "Rock anthems, take us higher"
     ]
   },
   {
-    id: "song-015",
-    title: "Moonwalker",
-    artist: "Retro Kings",
-    genre: "90s Love",
-    mood: "Nostalgic",
-    duration: "4:02",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=300&auto=format&fit=crop",
-    album: "Time Machine",
-    year: 1996,
+    id: "s011",
+    title: "Urban Flow",
+    artist: "Rap Legends",
+    genre: "Hip Hop",
+    duration: "3:40",
+    image: "https://images.unsplash.com/photo-1605296867304-46d4625df7ea?q=80&w=300&auto=format&fit=crop",
+    album: "City Streets",
+    year: 2022,
+    audio: "https://cdn.trendybeatz.com/audio/Seyi-Vibez-Hat-Trick-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Step back in time, feel the groove",
-      "Got my high tops on, ready to move",
-      "The dance floor calls my name tonight",
-      "Under the disco's flashing light",
-      "Moonwalk across the floor with ease",
-      "Moves so smooth they're sure to please",
-      "This rhythm takes me back to then",
-      "When music made us live again"
+      "From the block, to the top",
+      "Hip hop beats, never stop",
+      "With every rhyme, a story told",
+      "Urban flow, brave and bold"
     ]
   },
   {
-    id: "song-016",
-    title: "Mere Sapne",
-    artist: "Raj Kumar & Priya Patel",
-    genre: "Bollywood",
-    mood: "Hopeful",
-    duration: "4:32",
-    image: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=300&auto=format&fit=crop",
-    album: "Naya Safar",
+    id: "s012",
+    title: "Techno Pulse",
+    artist: "Dancefloor Kings",
+    genre: "Electronic",
+    duration: "6:30",
+    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=300&auto=format&fit=crop",
+    album: "Rave Nation",
     year: 2023,
+    audio: "https://cdn.trendybeatz.com/audio/Shallipopi-Elon-Musk-(TrendyBeatz.com).mp3",
     lyrics: [
-      "Mere sapne, mere rang",
-      "Mere apne, mere sang",
-      "Udne do mujhe aasmaan mein",
-      "Khone do mujhe in khayalon mein",
-      "Zindagi hai ek safar",
-      "Tu hai mera humsafar",
-      "Chalo chalein hum door kahin",
-      "Jahaan mile khushiyan har pal humein"
+      "Techno beats, pulse so strong",
+      "All night long, we can't go wrong",
+      "With every drop, a pure sensation",
+      "Electronic music, our liberation"
     ]
   }
 ];
 
+// Most played track
+export const mostPlayedTrack: Song = {
+  id: "mp001",
+  title: "Midnight Dreams",
+  artist: "Luna Waves",
+  genre: "Lo-fi",
+  duration: "3:45",
+  image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop",
+  album: "Midnight Thoughts",
+  year: 2023,
+  audio: "https://cdn.trendybeatz.com/audio/Imagine-Dragons-Bad-Liar-(TrendyBeatz.com).mp3",
+  lyrics: [
+    "Your eyes reflect the sky",
+    "Lost in the quiet night",
+    "Memories passing by",
+    "In the soft moonlight",
+    "Time slows when you're near",
+    "Words we need not speak",
+    "The stars align so clear",
+    "In dreams we always meet"
+  ]
+};
+
+// Mock playlists
 export const playlists: Playlist[] = [
   {
-    id: "playlist-001",
-    title: "Chill Vibes",
-    description: "Perfect for relaxing evenings",
-    coverImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[0], songs[4], songs[7]]
+    id: "pl001",
+    title: "Chill Lo-fi Beats",
+    description: "Perfect for studying or relaxing.",
+    coverImage: "https://images.unsplash.com/photo-1543784014-495ea3992341?q=80&w=300&auto=format&fit=crop",
+    songs: ["s001", "s007"]
   },
   {
-    id: "playlist-002",
-    title: "Workout Mix",
-    description: "High energy tracks to keep you moving",
-    coverImage: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[2], songs[5]]
+    id: "pl002",
+    title: "Classic Jazz",
+    description: "Timeless jazz standards for every mood.",
+    coverImage: "https://images.unsplash.com/photo-1520523834775-226121970549?q=80&w=300&auto=format&fit=crop",
+    songs: ["s002", "s008"]
   },
   {
-    id: "playlist-003",
-    title: "Mood Boosters",
-    description: "Songs to lift your spirits",
-    coverImage: "https://images.unsplash.com/photo-1504898770365-14faca6a7320?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[1], songs[6]]
+    id: "pl003",
+    title: "Summer Pop Hits",
+    description: "The ultimate soundtrack for your summer adventures.",
+    coverImage: "https://images.unsplash.com/photo-1504280390367-36fa6e14ca59?q=80&w=300&auto=format&fit=crop",
+    songs: ["s003", "s009"]
   },
   {
-    id: "playlist-004",
-    title: "Rainy Day Collection",
-    description: "Perfect soundtrack for rainy days",
-    coverImage: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[3], songs[7]]
+    id: "pl004",
+    title: "Rock Anthems",
+    description: "The greatest rock songs of all time.",
+    coverImage: "https://images.unsplash.com/photo-1470229722913-7c0e2dbb0ba4?q=80&w=300&auto=format&fit=crop",
+    songs: ["s004", "s010"]
   },
   {
-    id: "playlist-005",
-    title: "Bollywood Hits",
-    description: "Top tracks from Indian cinema",
-    coverImage: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[10], songs[15]]
+    id: "pl005",
+    title: "Hip Hop Essentials",
+    description: "Essential hip hop tracks from the golden age to today.",
+    coverImage: "https://images.unsplash.com/photo-1584321539459-64e9499ca943?q=80&w=300&auto=format&fit=crop",
+    songs: ["s005", "s011"]
   },
   {
-    id: "playlist-006",
-    title: "90s Nostalgia",
-    description: "Take a trip down memory lane",
-    coverImage: "https://images.unsplash.com/photo-1502773860571-211a597d6e4b?q=80&w=300&auto=format&fit=crop",
-    songs: [songs[9], songs[14]]
+    id: "pl006",
+    title: "Electronic Dance",
+    description: "The best electronic dance music for your workout.",
+    coverImage: "https://images.unsplash.com/photo-1542654985-b1f1453f5691?q=80&w=300&auto=format&fit=crop",
+    songs: ["s006", "s012"]
   }
 ];
-
-export const mostPlayedTrack = songs[0]; // "Your Eyes" is the most played track

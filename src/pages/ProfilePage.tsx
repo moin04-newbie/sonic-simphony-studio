@@ -9,7 +9,7 @@ const ProfileContent: React.FC = () => {
   return (
     <div className="w-full p-6">
       <div className="max-w-4xl mx-auto">
-        <section className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-8">
+        <section className="bg-white/20 backdrop-blur-sm rounded-xl p-6 mb-8">
           <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
             <div className="w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-coral to-teal flex items-center justify-center">
               <span className="text-4xl font-bold text-white">U</span>
@@ -30,15 +30,15 @@ const ProfileContent: React.FC = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Your Stats</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
               <span className="text-3xl font-bold text-coral">127</span>
               <span className="text-sm opacity-70">Playlists Created</span>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
               <span className="text-3xl font-bold text-teal">843</span>
               <span className="text-sm opacity-70">Songs Played</span>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-5 flex flex-col items-center">
               <span className="text-3xl font-bold text-yellow">52</span>
               <span className="text-sm opacity-70">Hours Listened</span>
             </div>
@@ -48,7 +48,7 @@ const ProfileContent: React.FC = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Top Genres</h2>
           <div className="space-y-4">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium">Lo-fi</span>
                 <span className="text-sm opacity-70">43%</span>
@@ -57,7 +57,7 @@ const ProfileContent: React.FC = () => {
                 <div className="bg-coral h-2 rounded-full" style={{ width: '43%' }}></div>
               </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium">Pop</span>
                 <span className="text-sm opacity-70">27%</span>
@@ -66,7 +66,7 @@ const ProfileContent: React.FC = () => {
                 <div className="bg-teal h-2 rounded-full" style={{ width: '27%' }}></div>
               </div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4">
+            <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium">Jazz</span>
                 <span className="text-sm opacity-70">15%</span>
@@ -80,7 +80,7 @@ const ProfileContent: React.FC = () => {
         
         <section>
           <h2 className="text-2xl font-bold mb-4">Account Settings</h2>
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6">
+          <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
             <div className="space-y-6">
               <button className="w-full py-3 bg-coral text-white rounded-lg hover:bg-coral/80 transition-colors">
                 Edit Profile
@@ -100,11 +100,9 @@ const ProfileContent: React.FC = () => {
 };
 
 const ProfilePage: React.FC = () => {
-  const { isDarkMode } = useMusic();
-  
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <div className="flex dark:bg-gray-900 h-screen overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white to-gray-100">
+      <div className="flex h-screen overflow-hidden">
         <Sidebar />
         
         <div className="ml-16 md:ml-20 flex-1 flex flex-col h-full overflow-hidden">
