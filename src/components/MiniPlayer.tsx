@@ -17,7 +17,7 @@ const MiniPlayer: React.FC = () => {
           className="w-full h-full object-cover"
           loading="eager"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300&auto=format&fit=crop";
+            e.currentTarget.src = "https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=300&auto=format&fit=crop";
           }}
         />
       </div>
